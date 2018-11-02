@@ -1,14 +1,13 @@
 // 1. Initialize Firebase
 var config = {
-    apiKey: "AIzaSyA06ZtNpnfh7nd7bJi7U4JAhL9Mx_uklDM",
-    authDomain: "train-scheduler-d3f9c.firebaseapp.com",
-    databaseURL: "https://train-scheduler-d3f9c.firebaseio.com",
-    projectId: "train-scheduler-d3f9c",
-    storageBucket: "",
-    messagingSenderId: "71942111352"
-  };
-  
-  firebase.initializeApp(config);
+  apiKey: "AIzaSyA06ZtNpnfh7nd7bJi7U4JAhL9Mx_uklDM",
+  authDomain: "train-scheduler-d3f9c.firebaseapp.com",
+  databaseURL: "https://train-scheduler-d3f9c.firebaseio.com",
+  projectId: "train-scheduler-d3f9c",
+  storageBucket: "train-scheduler-d3f9c.appspot.com",
+  messagingSenderId: "71942111352"
+};
+firebase.initializeApp(config);
   
   var database = firebase.database();
   
@@ -19,10 +18,10 @@ var config = {
     // Grabs user input
     var trainName = $("#train-name-input").val().trim();
     var trainDest = $("#destination-input").val().trim();
-    var trainStart = moment($("#start-input").val().trim(), "MM/DD/YYYY").format("X");
+    var trainStart = $("#start-input").val().trim();
     var trainFreq = $("#frequency-input").val().trim();
   
-    // Creates local "temporary" object for holding employee data
+    // Creates local "temporary" object for holding train data
     var newTrain = {
       name: trainName,
       destination: trainDest,
@@ -32,12 +31,6 @@ var config = {
   
     // Uploads employee data to the database
     database.ref().push(newTrain);
-  
-    // Logs everything to console
-    console.log(trainName.name);
-    console.log(trainDest.destination);
-    console.log(trainStart.start);
-    console.log(trainFreq.frequency);
   
     alert("train successfully added");
   
@@ -102,7 +95,7 @@ var config = {
     );
   
     // Append the new row to the table
-    $("#employee-table > tbody").append(newRow);
+    $("#table-body").append(newRow);
   });
   
   
