@@ -87,15 +87,16 @@ firebase.initializeApp(config);
   
     // Create the new row
     var newRow = $("<tr>").append(
-      $("<td>").text(trainName),
-      $("<td>").text(trainDest),
-      $("<td>").text(trainFreq),
-      $("<td>").text(nextTrain),
-      $("<td>").text(tMinutesTillTrain),
+    $("<th scope='row'>").text(trainName),
+    $("<th>").text(trainDest),
+    $("<th>").text(trainFreq),
+    $("<th>").text(nextTrain),
+    $("<th>").text(tMinutesTillTrain)
     );
   
     // Append the new row to the table
-    $("#table-body").append(newRow);
+    $("#train-table tbody").append(newRow);
+
   });
   
   
